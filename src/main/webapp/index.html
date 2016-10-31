@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Greetings</title>
+</head>
+<body>
+<h1>Hello World</h1>
+<div>
+ <form>
+ <div>
+ <label>Greetings Send From:</label> 
+  <input type="text" name="fname" placeholder="Greet From">
+  </div>
+  <div>
+  <label>Greetings Send To:</label>  
+  <select name="Relation">  	   
+  <option value="Friend">Friend</option>
+  <option value="Boyfriend">Boyfriend</option>
+  <option value="Girlfriend">Girlfriend</option>
+  <option value="Father">Father</option>
+  <option value="Mother">Mother</option>
+  <option value="Husband">Husband</option>
+  <option value="Wife">Wife</option>
+  <option value="Enemy">Enemy</option>
+</select> 
+  </div>
+  <div>
+   <label >Type Your Greetings Here:</label>
+   <textarea name="About Relation" rows="1" cols="50"> </textarea> 
+  </div> 
+  <h1>Types text is:  <span id="greeting"></span>	</h1>
+  <button type="submit" onclick="onClickSubmit()" value="Submit">Submit</button>
+</form> 
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>	
+	<script>
+		function onClickSubmit(){
+			var fname = document.querySelectorAll('input[name="fname"]')[0].value;
+				relation   = document.querySelectorAll('[name="Relation"]')[0].value;
+				message	   = document.querySelectorAll('[name="About Relation"]')[0].value;	
+				url		   = "http://localhost:8080/greet.html";
+	        $.ajax({
+	        	url         : "http://localhost:8080/greeting",
+	        	method      : 'POST',
+	        	contentType : "application/json; charset=utf-8",
+	        	dataType    : "json",
+	        	data        : JSON.stringify({
+       			  "fname" : fname,
+       			  "relation" : relation,
+       			  "message": message
+	        	}),
+	        	success : function(response){	
+	        		alert("Request Success!");
+	        	},
+	        	failure : function(response){
+	        		alert("Request failed!");
+	        	}
+	        });	        
+		}		
+	</script>
+</body>
+</html>
