@@ -2,63 +2,173 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Greetings</title>
+<title>GreetingBot - A Greet Machine</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
 </head>
 <body>
-<h1>Hello World</h1>
-<div>
- <form>
- <div>
- <label>Greetings Send From:</label> 
-  <input type="text" name="fname" placeholder="Greet From">
-  </div>
-  <div>
-  <label>Greetings Send To:</label>  
-  <select name="Relation">  	   
-  <option value="Friend">Friend</option>
-  <option value="Boyfriend">Boyfriend</option>
-  <option value="Girlfriend">Girlfriend</option>
-  <option value="Father">Father</option>
-  <option value="Mother">Mother</option>
-  <option value="Husband">Husband</option>
-  <option value="Wife">Wife</option>
-  <option value="Enemy">Enemy</option>
-</select> 
-  </div>
-  <div>
-   <label >Type Your Greetings Here:</label>
-   <textarea name="About Relation" rows="1" cols="50"> </textarea> 
-  </div> 
-  <h1>Types text is:  <span id="greeting"></span>	</h1>
-  <button type="submit" onclick="onClickSubmit()" value="Submit">Submit</button>
-</form> 
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>	
+	<div>
+
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+						aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#"> <b>GreetingBot</b>
+					</a>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<form>
+				<div class="form-group">
+					<label for="exampleInputtext1">Greetings Send From:</label> <input
+						type="text" name="fname" class="form-control"
+						placeholder="Your name">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputtext2">Greetings Send To:</label>
+					<div class="Select your relation">
+						<select class="btn btn-default dropdown-toggle" name="relation" id="slct1" onchange="populate(this.id,'slct2')">
+							<option value="">Choose your relation</option>
+							<option value="Friend">Friend</option>
+							<option value="Boyfriend">Boyfriend</option>
+							<option value="Girlfriend">Girlfriend</option>
+							<option value="Father">Father</option>
+							<option value="Mother">Mother</option>
+							<option value="Husband">Husband</option>
+							<option value="Wife">Wife</option>
+							<option value="Enemy">Enemy</option>
+						</select>
+					</div>
+				</div>
+
+				<label>Type Your Greetings Here:</label><br>
+				<textarea name="aboutRelation" rows="4" cols="50"
+					placeholder="Here you can leave this blank for default message or can type your own words"></textarea>
+				Or select best quote from below 
+				<hr />
+				<select class="btn btn-default dropdown-toggle" id="slct2" name="preDefiendQuote">
+				<option value="">Select your greeting</option>
+				</select>
+				<hr />
+
+				<!-- ***Google Custom Search***
+				<div>
+					<script>
+						(function() {
+							var cx = '000175435134829712354:jjf1azfyh-0';
+							var gcse = document.createElement('script');
+							gcse.type = 'text/javascript';
+							gcse.async = true;
+							gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+							var s = document.getElementsByTagName('script')[0];
+							s.parentNode.insertBefore(gcse, s);
+						})();
+					</script>
+					<gcse:search></gcse:search>
+				</div> -->
+				<button type="button" class="btn btn-default"
+					onclick="onClickSubmit()" value="Submit">Submit</button>
+			</form>
+		</div>
+
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous">
+	</script>
+
 	<script>
-		function onClickSubmit(){
-			var fname = document.querySelectorAll('input[name="fname"]')[0].value;
-				relation   = document.querySelectorAll('[name="Relation"]')[0].value;
-				message	   = document.querySelectorAll('[name="About Relation"]')[0].value;	
-				url		   = "http://localhost:8080/greet.html";
-	        $.ajax({
-	        	url         : "http://localhost:8080/greeting",
-	        	method      : 'POST',
-	        	contentType : "application/json; charset=utf-8",
-	        	dataType    : "json",
-	        	data        : JSON.stringify({
-       			  "fname" : fname,
-       			  "relation" : relation,
-       			  "message": message
-	        	}),
-	        	success : function(response){	
-	        		alert("Request Success!");
-	        	},
-	        	failure : function(response){
-	        		alert("Request failed!");
-	        	}
-	        });	        
-		}		
+		function onClickSubmit() {
+			var fname = document.querySelectorAll('[name="fname"]')[0].value, 
+			relation = document.querySelectorAll('[name="relation"]')[0].value,
+		    messagePredefined = document.querySelectorAll('[name="preDefiendQuote"]')[0].value,
+			messageDefined = document.querySelectorAll('[name="aboutRelation"]')[0].value, message;
+					
+			if (messagePredefined) {
+				message = messagePredefined;
+			} else {
+				message = messageDefined;
+			}
+			greetingUrl = "http://localhost:8080/greet.html";
+
+			$.ajax({
+				url : "http://localhost:8080/greeting",
+				method : 'POST',
+				contentType : "application/json; charset=utf-8",
+				dataType : "json",
+				data : JSON.stringify({
+					"fname" : fname,
+					"relation" : relation,
+					"message" : message
+				}),
+				success : function(response) {
+					alert("Request Success!");
+					makers = JSON.stringify(response)
+					console.log(response);
+					$.post(greetingUrl, function(response) {
+					});
+
+					location.href = greetingUrl + '?name=' + fname
+							+ '?relationType=' + relation + '?message='
+							+ response.message;
+					$('#content').html(response.message);
+
+				},
+				failure : function(response) {
+					alert("Request failed!");
+				}
+			});
+		}
+		/* Form Select Change Dynamic List Option Elements - reference-> https://www.developphp.com/video/JavaScript/Form-Select-Change-Dynamic-List-Option-Elements-Tutorial */
+		function populate(s1,s2){
+			var s1 = document.getElementById(s1);
+			var s2 = document.getElementById(s2);
+			s2.innerHTML = "";
+			if(s1.value == "Father"){
+				var optionArray = ["|","A father is a man who expects his son to be as good a man as he meant to be.|A father is a man who expects his son to be as good a man as he meant to be.",
+									"To a father growing old nothing is dearer than a daughter.|To a father growing old nothing is dearer than a daughter.",
+									"Our heavenly Father understands our disappointment, suffering, pain, fear, and doubt.|Our heavenly Father understands our disappointment, suffering, pain, fear, and doubt."];
+			} else if(s1.value == "Friend"){
+				var optionArray = ["|","avenger|Avenger","challenger|Challenger","charger|Charger"];
+			} else if(s1.value == "Boyfriend"){
+				var optionArray = ["|","avenger|Avenger","challenger|Challenger","charger|Charger"];
+			} else if(s1.value == "Girlfriend"){
+				var optionArray = ["|","avenger|Avenger","challenger|Challenger","charger|Charger"];
+			} else if(s1.value == "Mother"){
+				var optionArray = ["|","avenger|Avenger","challenger|Challenger","charger|Charger"];
+			} else if(s1.value == "Husband"){
+				var optionArray = ["|","avenger|Avenger","challenger|Challenger","charger|Charger"];
+			} else if(s1.value == "Wife"){
+				var optionArray = ["|","avenger|Avenger","challenger|Challenger","charger|Charger"];
+			} else if(s1.value == "Enemy"){
+				var optionArray = ["|","avenger|Avenger","challenger|Challenger","charger|Charger"];
+			} 
+			for(var option in optionArray){
+				var pair = optionArray[option].split("|");
+				var newOption = document.createElement("option");
+				newOption.value = pair[0];
+				newOption.innerHTML = pair[1];
+				s2.options.add(newOption);
+			}
+		}
 	</script>
 </body>
 </html>

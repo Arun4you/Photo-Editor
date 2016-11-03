@@ -1,18 +1,18 @@
-package com.Greetings;
+package com.greeting;
 
-public class Greetings {
+public class Greeting {
 
 	private String fname;
 	private String relation;
 	private String message;
 
 
-	public Greetings() {
+	public Greeting() {
 		// TODO Auto-generated constructor stub
 	
 	}
 	
-	public Greetings(String fname, String relation, String message) {
+	public Greeting(String fname, String relation, String message) {
 		// TODO Auto-generated constructor stub
 		this.fname = fname;
 		this.relation = relation;

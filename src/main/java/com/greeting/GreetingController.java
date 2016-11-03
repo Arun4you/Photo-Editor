@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.Greetings;
+package com.greeting;
 
 import java.io.IOException;
 
@@ -21,20 +21,26 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 
 @RestController 
-public class GreetingsController {
+public class GreetingController {
 
 	private enum Relation {
 		Friend,Boyfriend,Girlfriend,Father,Mother,Husband,Wife,Enemy;
-}
+	}
+	
 	@RequestMapping(value="/greeting", method=RequestMethod.POST, consumes="application/json")
 	public String getmessage(@RequestBody String getpayload) throws JsonParseException, JsonMappingException, IOException{
 		ObjectMapper mapper = new ObjectMapper();
 		//mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-		Greetings greeting = mapper.readValue(getpayload, Greetings.class);
+		Greeting greeting = new Greeting();
+		greeting = mapper.readValue(getpayload, Greeting.class);
 		Relation relation = Relation.valueOf(greeting.getRelation());
 		String inputmessage = greeting.getMessage();
 		String messagetemplate;
-		if (inputmessage.isEmpty()){
+		System.out.println(inputmessage.isEmpty());
+		System.out.println("Hello"+inputmessage+"Darling");
+		System.out.println("".equals(inputmessage));
+		
+		if (inputmessage.isEmpty() || "".equals(inputmessage)){
 			switch(relation){
 			case Friend:
 					messagetemplate = "Love you friend";
@@ -43,7 +49,7 @@ public class GreetingsController {
 			case Boyfriend:
 				messagetemplate = "Love you boyfriend";
 			    greeting.setMessage(messagetemplate);			    
-			break;
+			    break;
 			case Girlfriend: 
 				messagetemplate = "Love you girlfriend";
 			    greeting.setMessage(messagetemplate);			    
@@ -75,12 +81,17 @@ public class GreetingsController {
 		} }else {	
 			greeting.setMessage(inputmessage);	
 		}			  
-		return  mapper.writeValueAsString(greeting);	
+		System.out.println(greeting.getMessage());
+		String temp = mapper.writeValueAsString(greeting);
+		//return  mapper.writeValueAsString(greeting);
+		System.out.println(temp);
+		return temp;
+
 	}
 	
 	@RequestMapping(value="/{fname}/{Relation}/{About Relation}", method=RequestMethod.GET, consumes="application/json")
-	public Greetings getdetails(@RequestParam(value="fname") String fname, @RequestParam(value="Relation") String relation, @RequestParam(value="About Relation") String message){		
-		Greetings greet = new Greetings(fname, relation, message);
+	public Greeting getdetails(@RequestParam(value="fname") String fname, @RequestParam(value="Relation") String relation, @RequestParam(value="About Relation") String message){		
+		Greeting greet = new Greeting(fname, relation, message);
 		return greet;			
 	}
 }

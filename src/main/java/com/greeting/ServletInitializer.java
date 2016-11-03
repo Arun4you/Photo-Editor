@@ -1,4 +1,4 @@
-package com.Greetings;
+package com.greeting;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
@@ -7,7 +7,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(GreetingsApplication.class);
+		return application.sources(Application.class);
 	}
 
 }

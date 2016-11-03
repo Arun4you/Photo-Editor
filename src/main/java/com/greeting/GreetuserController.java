@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.Greetings;
+package com.greeting;
 
 import java.io.IOException;
 
@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 public class GreetuserController {
 
-	@RequestMapping(value="/greet", method=RequestMethod.GET, consumes="application/json")
+	@RequestMapping(value="/greet", method=RequestMethod.GET, produces="application/json")
 	public String getmessage(@RequestBody String getpayload) throws JsonParseException, JsonMappingException, IOException{
 		ObjectMapper mapper = new ObjectMapper();
 		
