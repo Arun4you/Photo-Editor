@@ -8,7 +8,6 @@ import java.io.IOException;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -34,7 +33,7 @@ public class GreetingController {
 		Greeting greeting = new Greeting();
 		greeting = mapper.readValue(getpayload, Greeting.class);
 		Relation relation = Relation.valueOf(greeting.getRelation());
-		String inputmessage = greeting.getMessage();
+		String inputmessage = greeting.getMessageSummary();
 		String messagetemplate;
 		System.out.println(inputmessage.isEmpty());
 		System.out.println("Hello"+inputmessage+"Darling");
@@ -44,44 +43,44 @@ public class GreetingController {
 			switch(relation){
 			case Friend:
 					messagetemplate = "Love you friend";
-				    greeting.setMessage(messagetemplate);			    
+				    greeting.setMessageSummary(messagetemplate);			    
 				break;
 			case Boyfriend:
 				messagetemplate = "Love you boyfriend";
-			    greeting.setMessage(messagetemplate);			    
+			    greeting.setMessageSummary(messagetemplate);			    
 			    break;
 			case Girlfriend: 
 				messagetemplate = "Love you girlfriend";
-			    greeting.setMessage(messagetemplate);			    
+			    greeting.setMessageSummary(messagetemplate);			    
 			break;
 			case Father: 
 				messagetemplate = "Love you daddy";
-			    greeting.setMessage(messagetemplate);			    
+			    greeting.setMessageSummary(messagetemplate);			    
 			break;
 			case Mother:
 				messagetemplate = "Love you mommy";
-			    greeting.setMessage(messagetemplate);			    
+			    greeting.setMessageSummary(messagetemplate);			    
 			break;
 			case Husband:
 				messagetemplate = "Love you husband";
-			    greeting.setMessage(messagetemplate);			    
+			    greeting.setMessageSummary(messagetemplate);			    
 			break;
 			case Wife: 
 				messagetemplate = "Love you wife";
-			    greeting.setMessage(messagetemplate);			    
+			    greeting.setMessageSummary(messagetemplate);			    
 			break;
 			case Enemy: 
 				messagetemplate ="Miss you enemy" + 
 						"-" + greeting.getFname();
-			    greeting.setMessage(messagetemplate);			    
+			    greeting.setMessageSummary(messagetemplate);			    
 			break;
 			default:
 				break;	
 				
 		} }else {	
-			greeting.setMessage(inputmessage);	
+			greeting.setMessageSummary(inputmessage);	
 		}			  
-		System.out.println(greeting.getMessage());
+		System.out.println(greeting.getMessageSummary());
 		String temp = mapper.writeValueAsString(greeting);
 		//return  mapper.writeValueAsString(greeting);
 		System.out.println(temp);
@@ -89,9 +88,4 @@ public class GreetingController {
 
 	}
 	
-	@RequestMapping(value="/{fname}/{Relation}/{About Relation}", method=RequestMethod.GET, consumes="application/json")
-	public Greeting getdetails(@RequestParam(value="fname") String fname, @RequestParam(value="Relation") String relation, @RequestParam(value="About Relation") String message){		
-		Greeting greet = new Greeting(fname, relation, message);
-		return greet;			
-	}
 }

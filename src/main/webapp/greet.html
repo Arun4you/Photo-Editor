@@ -3,42 +3,111 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Greeting</title>
-  <link rel="stylesheet" type="text/css" href="Styles.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">	
+<link rel="stylesheet" type="text/css" href="Styles.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">
-     <b>Create new greeting</b> 
-      </a>
-    </div>
- </div>
- </nav>  
- <div class="container"> 
-	<h1>
-		Greeting for you <span id=relation></span>!!
-	</h1>
-	
-	<div id="bg">
-	<div id="bgoverlay">
-	<span id="returntext"></span>
-	<h1 id="hypen"><span id="byname"></span></h1>
-	</div>
-	<div id="content">
-	
-	</div>
-	</div>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"> <b>Create new greeting</b>
+				</a>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<h1>
+			Greeting for you <span id=relation></span>!!
+		</h1>
+		<div class="container2">
+
+			<div id="bg">
+				<div id="facts">
+
+					<ul>
+						<h4 align="center">
+							<u>Quick Facts</u>
+						</h4>
+						<li>Known As &nbsp <span id="playername"></span></li>
+						<li>Born On &nbsp&nbsp&nbsp&nbsp</li>
+						<li>Born In &nbsp&nbsp&nbsp&nbsp&nbsp</li>
+						<li>Coach &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
+						<li>Achievement &nbsp</li>
+					</ul>
+				</div>
+				<div id="Quote">
+					<h5 align="center">
+						<u>Quote for Personality</u>
+					</h5>
+
+					<p align="center">
+						<b>You have to set yourself goals so you can push yourself
+							harder. Desire is the key to success.</br>
+						</b>
+					</p>
+					<div align="right">
+						-<i><span>Usain Bolt</span> </i>
+					</div>
+
+				</div>
+				<div id="Player"></div>
+
+				<div>
+					<img id="fslogo" src="/images/FSBubble.png">
+				<div id="tagline"><p>Efforts Recognized</p></div>
+				</div>
+				<div id="text" class="alltext">
+					<div id="horizontal_line1"></div>
+					<div id="bgoverlaytopright">
+						<h5><u>About <span id="playername"></span>:</u></h5>
+						<span id="texttopleft"></span><br>
+						<h5><u>Awards and Achievements:</u></h5>
+						<span id="textbottomright"></span>
+					</div>
+					<!-- <div id="bgoverlaytopleft">
+						<span id="texttopleft"></span>
+
+					</div>
+					<div id="bgoverlaybottomright">
+						<span id="textbottomright"></span>
+					</div>
+					<div id="vertical_line1"></div>
+
+					<div id="bgoverlaybottomcentre">
+						<span id="textbottomcentre"> Check Out flyingstump.com for more details </span>
+					</div>
+										<div id="vertical_line2"></div>
+
+					<div id="bgoverlaybottomleft">
+						<span id="textbottomleft"></span>
+
+					</div> -->
+	<!-- 				<div id="content"></div>
+					<hr class="hrbottom" /> -->
+
+				</div>
+
+
+			</div>
+
+		</div>
+
 	</div>
 
 	<script
@@ -48,17 +117,28 @@
 		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 		crossorigin="anonymous"></script>
 	<script>
-		
-		(function updateRelationship(){
-			var name 		 = location.search.split("?")[1].split("=")[1];	
-				relationType = location.search.split("?")[2].split("=")[1];		
-				message 	 = location.search.split("?")[3].split("=")[1];
-			var $cell = $('#bg');
-			$cell.css('background-image', "url('/images/"+relationType+".jpg')");
-			$("#relation").html(relationType);
-			$("#returntext").html(message);
-			$("#byname").html(name);
+		(function updateRelationship() {
+			var name = location.search.split("?")[1].split("=")[1];
+			relationType = location.search.split("?")[2].split("=")[1];
+			messageSummary = location.search.split("?")[3].split("=")[1];
+			messageSummaryReplaced = messageSummary.replace(/%20/g, " ");
+			messageChildhood = location.search.split("?")[4].split("=")[1];
+			messageChildhoodReplaced = messageChildhood.replace(/%20/g, " ");
+			messageCareer = location.search.split("?")[5].split("=")[1];
+			messageCareerReplaced = messageCareer.replace(/%20/g, " ");
+			messageAwards = location.search.split("?")[6].split("=")[1];
+			messageAwardsReplaced = messageAwards.replace(/%20/g, " ");
 
+			$cell = $('#bg');
+			$cell.css('background-image', "url('/images/Father.jpg')");
+			$cell1 = $('#Player');
+			$cell1.css('background-image', "url('/images/babu_imp.jpg')");
+			$("#relation").html(relationType);
+			$("#texttopleft").html(messageSummaryReplaced);
+			$("#texttopright").html(messageChildhoodReplaced);
+			$("#textbottomleft").html(messageCareerReplaced);
+			$("#textbottomright").html(messageAwardsReplaced);
+			$("#playername").html(name);
 		}());
 	</script>
 </body>

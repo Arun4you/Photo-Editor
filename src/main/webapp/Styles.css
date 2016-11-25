@@ -1,44 +1,206 @@
 @CHARSET "ISO-8859-1";
 
-h1 { 
-	color : blue;
+h1 {
+	color: blue;
 }
 
-#bg{
-   width: 740px;
-   height: 420px;
- /* background-image: url(images/loader.gif);  */
-  background-position: center;
-  background-repeat: no-repeat;
-  border: #3399FF solid 2px;
-  position : relative;	
+#bg {
+	width: 600px;
+	height: 600px;
+	/* background-image: url(images/loader.gif);  */
+	background-position: center;
+	background-repeat: no-repeat;
+	border: #3399FF solid 2px;
+	position: relative;
+	z-index: 1;
+	font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
-#returntext{
-	  position : absolute;	
-	  top : 50px;
-	  right: 80px;	  
-	  width: 150px;
-      height: 300px;
-      word-wrap:break-word;
+#facts {
+	position: absolute;
+	width: 280px;
+	height: 220px;
+	bottom: 60px;
+	left: 20px;
+	color: white;
+	font-size: 13px;
+	colour: white;
+	display: none
 }
 
-#byname{
-	position : absolute;	
-	  top : 200px;
-	  right: 80px;
-	  width: 50px;
-      height: 350px;
+#Quote {
+	position: absolute;
+	width: 550px;
+	height: 0px;
+	bottom: 130px;
+	left: 5px;
+	color: white;
+	font-size: 13px;
+	line-height: 100%;
 }
 
-#bgoverlay{
-	position : absolute;	
- 	background-color: rgba(248, 247, 216, 0.5);
- 	border-radius: 50%;
- 	/* box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2); */
-	top : 50px;
-	right: 80px;
+#fslogo {
+	position: absolute;
+	/* background-image: url(images/loader.gif);  */
+	width: 40px;
+	height: 40px;
+	bottom: 30px;
+	left: 300px;
+	border-radius: 50%;
+}
+
+#tagline {
+	position: absolute;
+	/* background-image: url(images/loader.gif);  */
 	width: 300px;
-    height: 300px;
-	
+	height: 10px;
+	bottom: 15px;
+	left: 275px;
+	align: justify;
+	color: white;
+}
+
+#Player {
+	width: 280px;
+	/* 	height: 220px;
+ */
+	height: 450px;
+	/* 	border: #3399FF solid 2px;
+ */
+	position: absolute;
+	right: 0px;
+	/* 	border-radius: 20%;
+ */
+	box-shadow: 0 0 14px 8px black inset;
+}
+
+texttopright {
+	position: absolute;
+	top: 50px;
+	right: 80px;
+	width: 150px;
+	height: 300px;
+	word-wrap: break-word;
+}
+
+#playername {
+	font-weight: bold;
+}
+
+#bgoverlaytopright {
+	position: absolute;
+	/* background-color: rgba(248, 247, 216, 0.8); */
+	/* background-color: rgba(0, 0, 0, 0.3); */
+	/* box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2); */
+	top: -225px;
+	left: -60px;
+	width: 300px;
+	height: 170px;
+	border-radius: 5%;
+	text-align: center;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+#bgoverlaytopleft {
+	position: absolute;
+	/* 	background-color: rgba(248, 247, 216, 0.6);
+ */ /* background-color: rgba(0, 0, 0, 0.3); */
+	/* box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2); */
+	top: 0px;
+	right: 300px;
+	width: 0px;
+	height: 170px;
+	border-radius: 5%;
+	text-align: center;
+	font-weight: bold;
+}
+
+#bgoverlaybottomright {
+	position: absolute;
+	/* 	background-color: rgba(248, 247, 216, 0.6);
+ */ /* box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2); */
+	/* background-color: rgba(0, 0, 0, 0.3);
+	top: 185px;
+	right: 5px;
+	width: 250px;
+	height: 155px;
+	border-radius: 5%;
+	text-align: center;
+	font-weight: bold;
+}
+
+#bgoverlaybottomcentre {
+	position: absolute;
+	/* background-color: rgba(248, 247, 216, 0.6); */
+	/* box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2); */
+	top: 185px;
+	right: 225px;
+	width: 110px;
+	height: 155px;
+	border-radius: 5%;
+	text-align: center;
+	font-weight: bold;
+}
+
+#bgoverlaybottomleft {
+	position: absolute;
+	/* 	background-color: rgba(248, 247, 216, 0.6);
+ */ /* box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2); */
+	/* background-color: rgba(0, 0, 0, 0.3); */
+	top: 185px;
+	right: 300px;
+	/* 	width: 200px;
+ */
+	width: 250px;
+	height: 155px;
+	border-radius: 5%;
+	text-align: center;
+	font-weight: bold;
+}
+
+hr.hrbottom {
+	position: absolute;
+	top: 155px;
+	display: block;
+	width: 80%;
+}
+
+#horizontal_line1 {
+	position: absolute;
+	top: 105px;
+	display: block;
+	width: 80%;
+}
+
+#vertical_line1 {
+	position: absolute;
+	top: 195px;
+	right: 213px;
+	height: 110px;
+	width: 1px;
+	background: #ffffff;
+}
+
+#vertical_line2 {
+	position: absolute;
+	top: 195px;
+	right: 345px;
+	height: 110px;
+	width: 1px;
+	background: #ffffff;
+}
+
+#text {
+	position: absolute;
+	top: 250px;
+	right: 20px;
+	width: 500px;
+	height: 600px;
+	font-size: 11px !important;
+	color: white;
+}
+
+.alltext {
+	font-size: 10px;
 }
